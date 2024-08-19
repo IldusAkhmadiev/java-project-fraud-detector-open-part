@@ -44,4 +44,18 @@ class FraudDetectorTest {
         assertFalse(fraudDetector.isFraud(transaction));
     }
 
+    @Test
+    public void isBannedCountry() {
+        Trader trader = new Trader("Zorro", "Jaja","Jamaica");
+        Transaction transaction = new Transaction(trader, 100);
+        assertTrue(fraudDetector.isFraud(transaction));
+    }
+
+    @Test
+    public void isAviableCountry() {
+        Trader trader = new Trader("Zorro", "Rome","Italy");
+        Transaction transaction = new Transaction(trader, 100);
+        assertFalse(fraudDetector.isFraud(transaction));
+    }
+
 }

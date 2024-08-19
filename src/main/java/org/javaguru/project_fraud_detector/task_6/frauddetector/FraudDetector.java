@@ -15,7 +15,10 @@ class FraudDetector {
         if (trader.getCity().equals("Sydney")) {
             return true;
         }
-
+        if(trader.getCountry().equalsIgnoreCase("Jamaica"))
+        {
+            return true;
+        }
         return false;
     }
 

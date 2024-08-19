@@ -37,4 +37,22 @@ class FraudDetectorTest {
         assertFalse(fraudDetector.isFraud(transaction));
     }
 
+    @Test
+    public void cityIsNotOnTheBlackList() {
+        Trader trader = new Trader("Zorro", "Rome");
+        Transaction transaction = new Transaction(trader, 100);
+        assertFalse(fraudDetector.isFraud(transaction));
+    }
+    @Test
+    public void cityIsOnTheBlackList() {
+        Trader trader = new Trader("Zorro", "Сидней");
+        Trader trader2 = new Trader("Zorro", "СиДней");
+        Trader trader3 = new Trader("Zorro", "сидней");
+        Transaction transaction = new Transaction(trader, 100);
+        Transaction transaction2 = new Transaction(trader2, 100);
+        Transaction transaction3 = new Transaction(trader3, 100);
+        assertFalse(fraudDetector.isFraud(transaction));
+        assertFalse(fraudDetector.isFraud(transaction2));
+        assertFalse(fraudDetector.isFraud(transaction3));
+    }
 }

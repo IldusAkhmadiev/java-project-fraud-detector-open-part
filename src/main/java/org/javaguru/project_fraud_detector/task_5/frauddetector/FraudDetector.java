@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 
 class FraudDetector {
     {
-         blackListCities.add("Сидней");
+         blackListCities.add("Sydney");
     }
 
     private static Set<String> blackListCities = new HashSet<String>();

@@ -5,4 +5,5 @@ class Trader {
     private String fullName;
     private String city;
 
+
 }

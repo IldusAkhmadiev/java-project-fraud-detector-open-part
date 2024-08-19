@@ -51,4 +51,17 @@ class FraudDetectorTest {
         assertFalse(fraudDetector.isFraud(transaction));
     }
 
+    @Test
+    public void fraudFromGerman() {
+        Trader trader = new Trader("Zorro", "Rome", "Germany");
+        Transaction transaction = new Transaction(trader, 2000);
+        assertTrue(fraudDetector.isFraud(transaction));
+    }
+
+    @Test
+    public void notFraudFromGerman() {
+        Trader trader = new Trader("Zorro", "Rome", "Germany");
+        Transaction transaction = new Transaction(trader, 900);
+        assertFalse(fraudDetector.isFraud(transaction));
+    }
 }

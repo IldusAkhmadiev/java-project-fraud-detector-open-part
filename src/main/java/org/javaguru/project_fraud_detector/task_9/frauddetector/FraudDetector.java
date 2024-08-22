@@ -1,31 +1,26 @@
 package org.javaguru.project_fraud_detector.task_9.frauddetector;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 class FraudDetector {
 
     boolean isFraud(Transaction transaction) {
         Trader trader = transaction.getTrader();
-        if (trader.getFullName().equals("Pokemon")) {
-            return true;
-        }
+        NameRule nameRule = new NameRule();
+        boolean fraud = nameRule.isFraud(transaction);
+        AmountRule amountRule = new AmountRule();
+        boolean fraud1 = amountRule.isFraud(transaction);
+        CityRule cityRule = new CityRule();
+        boolean fraud2 = cityRule.isFraud(transaction);
+        CountryRule countryRule = new CountryRule();
+        boolean fraud3 = countryRule.isFraud(transaction);
+        CountryAndAmountRule countryAndAmountRule = new CountryAndAmountRule();
+        boolean fraud4 = countryAndAmountRule.isFraud(transaction);
+        Boolean[] fraunds = {fraud1,fraud2,fraud3,fraud4};
+        boolean b = Arrays.asList(fraunds).stream().anyMatch(aBoolean -> aBoolean);
+        return b ? true : false;
 
-        if (transaction.getAmount() > 1000000) {
-            return true;
-        }
-
-        if (trader.getCity().equals("Sydney")) {
-            return true;
-        }
-
-        if (trader.getCountry().equals("Jamaica")) {
-            return true;
-        }
-
-        if (trader.getCountry().equals("Germany")
-            && transaction.getAmount() > 1000) {
-            return true;
-        }
-
-        return false;
     }
 
 }
